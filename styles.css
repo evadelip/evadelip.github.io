@@ -40,6 +40,10 @@ body {
   z-index: 0;
 }
 
+.starfield {
+  display: none;
+}
+
 main,
 .site-header,
 .site-footer {
@@ -303,29 +307,54 @@ h4 {
 
 .edu-list {
   display: grid;
-  gap: 0.7rem;
+  gap: 1.1rem;
+}
+
+.edu-entry {
+  background: #fffdf6;
+  border: 1px solid #ece7db;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.edu-entry p {
+  margin: 0.3rem 0 0.7rem;
+}
+
+.edu-entry ul {
+  margin: 0.35rem 0 0.8rem;
+  padding-left: 1.15rem;
+}
+
+.edu-entry li {
+  margin-bottom: 0.4rem;
 }
 
 .edu-item {
-  margin: 0;
+  margin: 0 0 0.7rem;
   display: flex;
-  align-items: center;
-  gap: 0.65rem;
+  align-items: flex-start;
+  gap: 0.9rem;
 }
 
 .edu-logo {
-  width: 21px;
-  height: 21px;
-  border-radius: 4px;
+  width: 86px;
+  height: 86px;
+  border-radius: 10px;
   border: 1px solid #ded8c9;
   background: #ffffff;
   object-fit: contain;
-  padding: 1px;
-  flex: 0 0 21px;
+  padding: 4px;
+  flex: 0 0 86px;
+  box-shadow: 0 8px 18px rgba(24, 33, 29, 0.12);
 }
 
 .edu-text {
   display: inline-block;
+}
+
+.edu-text p {
+  margin: 0.2rem 0 0;
 }
 
 .section-links {
@@ -358,6 +387,12 @@ h4 {
 
 .experience-side-by-side .panel {
   height: 100%;
+  grid-template-columns: 1fr;
+  gap: 0.9rem;
+}
+
+.experience-side-by-side .panel-title {
+  padding-top: 0;
 }
 
 .two-col {
@@ -467,5 +502,352 @@ h4 {
   .panel {
     padding: 1rem;
     border-radius: 14px;
+  }
+}
+
+/* About page: left column with About above On this page */
+.about-panel {
+  grid-template-columns: minmax(210px, 0.28fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.about-panel > .panel-title {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.about-panel > .about-sidebar {
+  grid-column: 1;
+  grid-row: 2;
+  position: sticky;
+  top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  gap: 0.5rem;
+  padding: 1rem 0 0;
+  border-top: 1px solid var(--line);
+  border-left: 0;
+}
+
+.about-sidebar-title {
+  margin: 0 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.about-sidebar a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.about-sidebar a:hover,
+.about-sidebar a:focus-visible {
+  color: var(--accent);
+}
+
+.about-panel > .panel-content {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+@media (max-width: 880px) {
+  .about-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .about-panel > .panel-title,
+  .about-panel > .about-sidebar,
+  .about-panel > .panel-content {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .about-panel > .about-sidebar {
+    position: static;
+  }
+}
+
+.funding-group-title {
+  margin: 1.25rem 0 0.65rem;
+  font-size: 1.15rem;
+  font-style: italic;
+}
+
+.funding-list {
+  margin: 0;
+  padding-left: 1.3rem;
+}
+
+.funding-list li {
+  margin-bottom: 0.8rem;
+}
+
+.funding-list li span {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--muted);
+}
+
+/* Experience page: sidebar navigation */
+.experience-panel {
+  grid-template-columns: minmax(210px, 0.28fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.experience-panel > .panel-title {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.experience-panel > .experience-sidebar {
+  grid-column: 1;
+  grid-row: 2;
+  position: sticky;
+  top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.experience-sidebar-title {
+  margin: 0 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.experience-sidebar a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.experience-sidebar a:hover,
+.experience-sidebar a:focus-visible {
+  color: var(--accent);
+}
+
+.experience-panel > .panel-content {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+#academic-experience,
+#professional-experience,
+#part-time-experience,
+#voluntary-experience {
+  scroll-margin-top: 1.5rem;
+}
+
+@media (max-width: 880px) {
+  .experience-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .experience-panel > .panel-title,
+  .experience-panel > .experience-sidebar,
+  .experience-panel > .panel-content {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .experience-panel > .experience-sidebar {
+    position: static;
+  }
+}
+
+/* Experience page: compact cards for each role/activity */
+.experience-panel .subsection {
+  padding: 1rem;
+}
+
+.experience-panel .subsection > article {
+  margin: 0 0 0.8rem;
+  padding: 1rem;
+  background: #fffdf6;
+  border: 1px solid #ece7db;
+  border-radius: 12px;
+}
+
+.experience-panel .subsection > article:last-child {
+  margin-bottom: 0;
+}
+
+/* Override the usual dashed divider between articles */
+.experience-panel .panel-content article {
+  border-bottom: 0;
+  padding-bottom: 1rem;
+}
+
+.experience-panel .subsection > article h4 {
+  margin-bottom: 0.35rem;
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.experience-panel .subsection > article p {
+  margin: 0.45rem 0 0;
+}
+
+.experience-panel .subsection > article ul {
+  margin: 0.55rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.experience-panel .subsection > article li {
+  margin-bottom: 0.35rem;
+}
+
+/* About page: compact cards within subsections */
+.about-panel .about-entry {
+  margin: 0 0 0.8rem;
+  padding: 1rem;
+  background: #fffdf6;
+  border: 1px solid #ece7db;
+  border-radius: 12px;
+}
+
+.about-panel .about-entry:last-child {
+  margin-bottom: 0;
+}
+
+.about-panel .about-entry h4 {
+  margin-bottom: 0.4rem;
+  font-family: "Manrope", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.about-panel .about-entry p {
+  margin: 0;
+}
+
+.about-panel .about-entry ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.about-panel .about-entry li {
+  margin-bottom: 0.35rem;
+}
+
+.sports-entry {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.sports-photo {
+  width: 150px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid var(--line);
+}
+
+.sports-entry-content {
+  flex: 1;
+}
+
+@media (max-width: 560px) {
+  .sports-entry {
+    flex-direction: column;
+  }
+
+  .sports-photo {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* Publications & Talks page: sidebar navigation */
+.publications-panel {
+  grid-template-columns: minmax(210px, 0.28fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  gap: 1.6rem;
+  align-items: start;
+}
+
+.publications-panel > .panel-title {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.publications-panel > .publications-sidebar {
+  grid-column: 1;
+  grid-row: 2;
+  position: sticky;
+  top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
+.publications-sidebar-title {
+  margin: 0 0 0.35rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.publications-sidebar a {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.publications-sidebar a:hover,
+.publications-sidebar a:focus-visible {
+  color: var(--accent);
+}
+
+.publications-panel > .panel-content {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+#publications,
+#talks,
+#posters {
+  scroll-margin-top: 1.5rem;
+}
+
+@media (max-width: 880px) {
+  .publications-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .publications-panel > .panel-title,
+  .publications-panel > .publications-sidebar,
+  .publications-panel > .panel-content {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .publications-panel > .publications-sidebar {
+    position: static;
   }
 }
